@@ -29,4 +29,4 @@ kill_timeout = "5s"
     soft_limit = 75
 
 [deploy]
-  strategy = "rolling"
+  strategy = "immediate"
