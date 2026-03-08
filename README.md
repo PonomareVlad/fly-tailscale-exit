@@ -48,7 +48,7 @@ Tailnet ──────▶ Fly VM ──▶ Internet (exit traffic)
 | Variable | Description |
 |---|---|
 | `TAILSCALE_AUTHKEY` | Tailscale auth key used to join your Tailnet (set via `fly secrets set`) |
-| `TAILSCALE_HOSTNAME` | Optional hostname for the node (default: `fly-exit`) |
+| `TAILSCALE_HOSTNAME` | Optional hostname for the node (default: `fly-<FLY_REGION>`) |
 
 Key settings in `fly.toml`:
 

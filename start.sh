@@ -10,6 +10,6 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 /app/tailscaled --state=/data/tailscale/tailscaled.state --socket=/var/run/tailscale/tailscaled.sock &
-/app/tailscale up --auth-key=${TAILSCALE_AUTHKEY} --hostname=${TAILSCALE_HOSTNAME:-fly-exit} --advertise-exit-node --ssh
+/app/tailscale up --auth-key=${TAILSCALE_AUTHKEY} --hostname=${TAILSCALE_HOSTNAME:-fly-${FLY_REGION}} --advertise-exit-node --ssh
 
 sleep infinity
