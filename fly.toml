@@ -1,32 +1,16 @@
-# fly.toml app configuration file generated for ps-tailscale on 2023-05-26T12:31:34Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
+app = 'fly-tailscale-exit'
+primary_region = 'fra'
 
-app = "ps-tailscale"
-primary_region = "waw"
-kill_signal = "SIGINT"
-kill_timeout = "5s"
+[[restart]]
+  policy = "always"
 
-[env]
-  PORT = "41641"
-  # create a reusable auth key and set it:
-  # flyctl secrets set TAILSCALE_AUTH_KEY=tskey-...
-  # ephemeral keys are hardly working for use as exit node as they are ipv6 only
-
-[[services]]
-  protocol = "udp"
-  internal_port = 41641
-  processes = ["app"]
-  auto_stop_machines = false
-  auto_start_machines = false
-
-  [[services.ports]]
-    port = 41641
-  [services.concurrency]
-    type = "connections"
-    hard_limit = 100
-    soft_limit = 75
+[[vm]]
+  cpus = 1
+  memory_mb = 256
+  memory = '256mb'
+  cpu_kind = 'shared'
+  size = 'shared-cpu-1x'
+  persist_rootfs = "always"
 
 [deploy]
   strategy = "immediate"
